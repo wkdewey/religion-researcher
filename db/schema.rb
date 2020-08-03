@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_211125) do
+ActiveRecord::Schema.define(version: 2020_08_03_234418) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "religious_tradition_id", null: false
+    t.index ["religious_tradition_id"], name: "index_authors_on_religious_tradition_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -30,6 +32,12 @@ ActiveRecord::Schema.define(version: 2020_08_03_211125) do
     t.integer "researcher_id"
     t.string "title"
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "religious_traditions", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,5 +59,6 @@ ActiveRecord::Schema.define(version: 2020_08_03_211125) do
     t.index ["author_id"], name: "index_texts_on_author_id"
   end
 
+  add_foreign_key "authors", "religious_traditions"
   add_foreign_key "texts", "authors"
 end
