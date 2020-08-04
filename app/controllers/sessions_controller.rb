@@ -4,9 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    
-    @researcher = Researcher.find_by(name: params[:name])
-    if @researcher && @researcher.authenticate(params[:password])
+    @researcher = Researcher.find_by(name: researcher_params[:name])
+    if @researcher && @researcher.authenticate(researcher_params[:password])
       sessions[:researcher_id] = @researcher.id
       redirect_to @researcher
     else
