@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def signup
-
+    @researcher = Researcher.new
   end
 
   def login
@@ -9,6 +9,6 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    
+
   end
 end
