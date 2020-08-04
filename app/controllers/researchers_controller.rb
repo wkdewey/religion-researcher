@@ -20,5 +20,9 @@ class ResearchersController < ApplicationController
 
   private
 
+  def researcher_params
+    params.require(:researcher).permit(:name, :email, :institution, :password)
+  end
+
   
 end
