@@ -18,13 +18,6 @@ class ResearchersController < ApplicationController
 
   end
 
-  def login
-    @researcher
-  end
-
-  def logout
-
-  end
 
   private
 
