@@ -41,4 +41,4 @@ yarn-debug.log*
 .yarn-integrity
 
 og-specs.md
-.dotenv
+.env

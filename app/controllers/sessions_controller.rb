@@ -14,14 +14,29 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_omniauth
+    @researcher = Researcher.find_or_create_from_auth_hash(auth_hash)
+  end
+
   def destroy
     session.clear
     redirect_to root_path
+  end
+
+  private
+
+  def find_or_create_from_auth_hash
+    byebug
   end
 
   def researcher_params
     params.permit(:name, :email, :institution, :password, :authenticity_token)
 
   end
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
 
 end
