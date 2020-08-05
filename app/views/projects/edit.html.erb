@@ -9,5 +9,5 @@
   <%= f.submit %>
 <% end %>
 <%= form_tag project_path(@project.id), method: "delete" do %>
-  <%= submit_tag "Delete #{project.title}"
+  <%= submit_tag "Delete #{@project.title}" %>
 <% end %>
