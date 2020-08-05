@@ -14,7 +14,7 @@ class ResearchersController < ApplicationController
   end
 
   def show
-
+    @researcher = Researcher.find_by(id: params[:id])
   end
 
 
