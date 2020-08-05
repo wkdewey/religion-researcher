@@ -4,4 +4,9 @@ class ProjectsController < ApplicationController
     @project = Project.find_by(id: params[:id])
   end
 
+  def edit
+    @project = Project.find_by(id: params[:id])
+    @texts = Text.all
+  end
+
 end

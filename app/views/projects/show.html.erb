@@ -8,3 +8,4 @@
   <p>Religious tradition: <%= text.author.religious_tradition.name %></p>
   <p>Notes: <%= text.notes.where(project_id: @project.id).first.content %></p>
 <% end %>
+<%= link_to "Edit project", edit_project_path %>
