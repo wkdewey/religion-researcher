@@ -1,6 +1,7 @@
 <h1>Welcome, <%= @researcher.name %>!</h1>
 
 <h2>Your projects</h2>
-<%= @researcher.projects.each do |project| %>
-  <%= link_to project.title, project_path(project) %>
+<% @researcher.projects.each do |project| %>
+  <% byebug %>
+  <%= link_to project.title, project_path(project.id) %>
 <% end %>
