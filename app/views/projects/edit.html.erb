@@ -8,3 +8,6 @@
   <%= f.collection_check_boxes :text_ids, @texts, :id, :title %>
   <%= f.submit %>
 <% end %>
+<%= form_tag project_path(@project.id), method: "delete" do %>
+  <%= submit_tag "Delete #{project.title}"
+<% end %>
