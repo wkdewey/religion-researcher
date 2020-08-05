@@ -1,0 +1,5 @@
+<h1>Projects</h1>
+<% @projects.all do |project| %>
+  <h2><%= link_to project.title, project_path(project) %></h1>
+  <p>Researcher: <%= link_to project.researcher.name, researcher_path(project.researcher) %></p>
+<% end %>
