@@ -14,8 +14,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.clear
+    redirect_to root_path
+  end
+
   def researcher_params
     params.permit(:name, :email, :institution, :password, :authenticity_token)
+
   end
 
 end
