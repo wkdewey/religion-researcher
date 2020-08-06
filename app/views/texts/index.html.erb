@@ -1,4 +1,7 @@
-<h1><%= @text.title %></h1>
-<h2>by <%= @text.author.name %></h2>
-<p>Religious tradition: <%= @text.author.religious_tradition.name %></p>
-<p>Description: <%= @text.description %></p>
+<h1>Texts</h1>
+<% @texts.each do |text| %>
+<h2><%= link_to text.title, text_path(text) %></h1>
+<h3>by <%= text.author.name %></h2>
+<p>Religious tradition: <%= text.author.religious_tradition.name %></p>
+<hr>
+<% end %>
