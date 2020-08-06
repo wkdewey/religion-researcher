@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
   def create
     @researcher = Researcher.find_by(name: researcher_params[:name])
-    byebug
     if @researcher && @researcher.authenticate(researcher_params[:password])
       login_researcher(@researcher)
       redirect_to @researcher
@@ -15,7 +14,13 @@ class SessionsController < ApplicationController
   end
 
   def create_omniauth
-    @researcher = Researcher.find_or_create_from_auth_hash(auth_hash)
+    @researcher = Researcher.find_by(name: auth_hash[:info][:name])
+    if @researcher
+      login_researcher(@researcher)
+      redirect_to @researcher
+    else
+      redirect_to '/login'
+    end
   end
 
   def destroy
