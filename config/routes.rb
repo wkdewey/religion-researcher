@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'application#welcome'
   resources :researchers
   resources :projects
+  resources :texts
   get '/signup', to: 'researchers#new'
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
