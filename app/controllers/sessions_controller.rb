@@ -25,9 +25,6 @@ class SessionsController < ApplicationController
 
   private
 
-  def find_or_create_from_auth_hash
-    byebug
-  end
 
   def researcher_params
     params.permit(:name, :email, :institution, :password, :authenticity_token)
