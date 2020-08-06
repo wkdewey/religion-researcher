@@ -6,6 +6,15 @@
   <%= f.text_field :subject %>
   <%= f.label :author %>
   <%= f.collection_select :author_id, @authors, :id, :name %>
-  <%= f.label
+  <br>
+  <%= f.fields_for :author do |author| %>
+    <%= author.label :name, "New author" %>
+    <%= author.text_field :name %>
+    <%= author.collection_select :religious_tradition_id, @religious_tradition, :id, :name %>
+    <%= author.fields_for :religious_tradition do |r| %>
+      <%= r.label :name, "religious tradition of author" %>
+      <%= r.text_field :name %>
+    <% end %>
+  <% end %>
   <%= f.submit %>
 <% end %>
