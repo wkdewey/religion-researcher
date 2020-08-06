@@ -1,0 +1,11 @@
+<h1>Enter a new text</h1>
+<%= form_for @text do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :subject %>
+  <%= f.text_field :subject %>
+  <%= f.label :author %>
+  <%= f.collection_select :author_id, @authors, :id, :name %>
+  <%= f.label
+  <%= f.submit %>
+<% end %>
