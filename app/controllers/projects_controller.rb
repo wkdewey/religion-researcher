@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_researcher.projects.create(project_params)
-    byebug
     redirect_to project_path(@project)
   end
 

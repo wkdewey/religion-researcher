@@ -4,12 +4,13 @@ class TextsController < ApplicationController
     if params[:project_id]
       @project = Project.find_by(id: params[:project_id])
       if @project.nil?
-        redirect_to projects_path, #alert: "Project not found"
+        redirect_to projects_path
       else
         @texts = @project.texts
       end
+    else
+      @texts = Text.all
     end
-    @texts = Text.all
   end
 
   def new
