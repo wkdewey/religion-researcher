@@ -2,3 +2,11 @@
 <h2>by <%= @text.author.name %></h2>
 <p>Religious tradition: <%= @text.author.religious_tradition.name %></p>
 <p>Description: <%= @text.subject %></p>
+<h2>notes</h2>
+<% @text.notes.each do |note| %>
+  <% if note.content %>
+    <% byebug %>
+    <h3>From the project <%= note.project.title %> </h3>
+    <%= note.content  %>
+  <% end %>
+<% end %>

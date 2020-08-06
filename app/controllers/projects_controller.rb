@@ -32,6 +32,9 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find_by(id: params[:id])
+    @project.notes.each do |note|
+      note.destroy
+    end
     @project.destroy
     redirect_to projects_path
   end
