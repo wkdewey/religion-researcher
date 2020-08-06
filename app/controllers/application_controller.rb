@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def login_researcher(researcher)
     session[:researcher_id] = researcher.id
   end
+
+  def current_researcher
+    Researcher.find_by(id: session[:researcher_id])
+  end
 end
