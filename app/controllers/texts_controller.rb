@@ -27,14 +27,23 @@ class TextsController < ApplicationController
   end
 
   def new
-    @text = Text.new
-    @authors = Author.all
-    @religious_tradition = ReligiousTradition.all
+    if params[:project_id] && !Project.exists?(params[:project_id])
+      redirect_to projects_path
+    else
+      @text = Text.new
+      @authors = Author.all
+      @religious_tradition = ReligiousTradition.all
+    end
   end
 
   def create
-    @text = Text.create(text_params)
-    redirect_to text_path(@text)
+    @text = Text.new(text_params)
+    
+    if @text.save
+      redirect_to text_path(@text)
+    else
+      render :new
+    end
   end
 
   
