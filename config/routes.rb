@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     resources :texts
   end
   resources :texts
+  resources :notes
   get '/signup', to: 'researchers#new'
   get '/login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/notes/written', to: 'notes#written'
   match '/auth/:provider/callback', to: 'sessions#create_omniauth', via: [:get, :post]
 end
