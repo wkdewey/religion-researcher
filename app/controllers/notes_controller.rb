@@ -4,5 +4,10 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
-  
+  def written
+    @notes = Note.written
+    render :index
+  end
+
+
 end
