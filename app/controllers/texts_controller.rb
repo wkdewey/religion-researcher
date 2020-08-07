@@ -13,6 +13,19 @@ class TextsController < ApplicationController
     end
   end
 
+  def show
+    if params[:project_id]
+      @project = Project.find_by(id: params[:project_id])
+      @text = @project.texts.find_by(id: params[:id])
+      if @text.nil?
+        redirect_to project_texts_path(@project)
+      end
+    else
+      @text = Text.find(id: params[:id])
+    end
+    
+  end
+
   def new
     @text = Text.new
     @authors = Author.all
@@ -24,9 +37,7 @@ class TextsController < ApplicationController
     redirect_to text_path(@text)
   end
 
-  def show
-    @text = Text.find_by(id: params[:id])
-  end
+  
   
   def edit
     @text = Text.find_by(id: params[:id])
