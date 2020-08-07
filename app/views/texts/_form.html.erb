@@ -1,5 +1,5 @@
 <%= form_for @text do |f| %>
-  <%= note_project_id_field(@text) %>
+  <%= hidden_field_tag "text[project_ids][]", @text.project_ids%>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :subject %>

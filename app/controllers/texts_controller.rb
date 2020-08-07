@@ -27,11 +27,10 @@ class TextsController < ApplicationController
   end
 
   def new
-    byebug
     if params[:project_id] && !Project.exists?(params[:project_id])
       redirect_to projects_path
     else
-      @text = Text.new
+      @text = Text.new(project_ids: [params[:project_id]])
       @authors = Author.all
       @religious_tradition = ReligiousTradition.all
     end
@@ -55,10 +54,11 @@ class TextsController < ApplicationController
       if project.nil?
         redirect_to projects_path, alert: "Project not found."
       else
+        byebug
         @text = project.texts.find_by(id: params[:id])
         @authors = Author.all
         @religious_tradition = ReligiousTradition.all
-        redirect_to project_texts_path(project)
+        redirect_to project_texts_path(project) if @text.nil?
       end
     else
       @text = Text.find_by(id: params[:id])
@@ -68,15 +68,13 @@ class TextsController < ApplicationController
   end
 
   def update
-    byebug
     @text = Text.find_by(id: params[:id])
     @text.update(text_params)
     if @text.save
-      redirect_to @text
+      redirect_to text_path(@text)
     else
       render :edit
     end
-    redirect_to text_path(@text)
   end
 
   def destroy
@@ -90,6 +88,6 @@ class TextsController < ApplicationController
   private
 
   def text_params
-    params.require(:text).permit(:title, :subject, :author_id)
+    params.require(:text).permit(:title, :subject, :author_id, project_ids: [])
   end
 end
