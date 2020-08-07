@@ -21,7 +21,7 @@ class TextsController < ApplicationController
         redirect_to project_texts_path(@project)
       end
     else
-      @text = Text.find(id: params[:id])
+      @text = Text.find(params[:id])
     end
     
   end
@@ -49,15 +49,38 @@ class TextsController < ApplicationController
   
   
   def edit
-    @text = Text.find_by(id: params[:id])
-    @authors = Author.all
-    @religious_tradition = ReligiousTradition.all
+    if params[:project_id]
+      project = Project.find_by(id: params[:project_id])
+      if project.nil?
+        redirect_to projects_path, alert: "Project not found."
+      else
+        @text = project.texts.find_by(id: params[:id])
+        @authors = Author.all
+        @religious_tradition = ReligiousTradition.all
+        redirect_to project_texts_path(project)
+      end
+    else
+      @text = Text.find_by(id: params[:id])
+      @authors = Author.all
+      @religious_tradition = ReligiousTradition.all
   end
 
   def update
     @text = Text.find_by(id: params[:id])
     @text.update(text_params)
+    if @text.save
+      redirect_to @text
+    else
+      render :edit
+    end
     redirect_to text_path(@text)
+  end
+
+  def destroy
+    @text = Text.find(params[:id])
+    @text.destroy
+    flash[:notice] = "Text deleted."
+    redirect_to texts_path
   end
 
 
