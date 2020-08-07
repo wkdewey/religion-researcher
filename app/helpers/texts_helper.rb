@@ -1,0 +1,3 @@
+module TextsHelper
+  
+end

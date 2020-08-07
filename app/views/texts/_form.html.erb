@@ -16,5 +16,12 @@
       <%= r.text_field :name %>
     <% end %>
   <% end %>
+  <%= f.fields_for :notes do |note| %>
+    <% if note.project_id == @project %>
+      <%= note.label :content %>
+      <%= note.text_field :content %>
+    <% end %>
+
+  <% end %>
   <%= f.submit %>
 <% end %>
