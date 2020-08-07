@@ -27,6 +27,7 @@ class TextsController < ApplicationController
   end
 
   def new
+    byebug
     if params[:project_id] && !Project.exists?(params[:project_id])
       redirect_to projects_path
     else
@@ -63,9 +64,11 @@ class TextsController < ApplicationController
       @text = Text.find_by(id: params[:id])
       @authors = Author.all
       @religious_tradition = ReligiousTradition.all
+    end
   end
 
   def update
+    byebug
     @text = Text.find_by(id: params[:id])
     @text.update(text_params)
     if @text.save
