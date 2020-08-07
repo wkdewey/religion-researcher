@@ -54,7 +54,7 @@ class TextsController < ApplicationController
       if project.nil?
         redirect_to projects_path, alert: "Project not found."
       else
-        byebug
+        @project = params[:project_id].to_i
         @text = project.texts.find_by(id: params[:id])
         @authors = Author.all
         @religious_tradition = ReligiousTradition.all
@@ -70,6 +70,7 @@ class TextsController < ApplicationController
   def update
     @text = Text.find_by(id: params[:id])
     @text.update(text_params)
+    byebug
     if @text.save
       redirect_to text_path(@text)
     else
@@ -88,6 +89,19 @@ class TextsController < ApplicationController
   private
 
   def text_params
-    params.require(:text).permit(:title, :subject, :author_id, project_ids: [])
+    params.require(:text).permit(:title,
+      :subject, 
+      :author_id, 
+      project_ids: [],
+      author_attributes: [
+        :name,
+        :religious_tradition_id,
+        religious_tradition_attributes: [
+          :name,
+          :id
+        ]
+      ],
+      notes_attributes: [ :name, :id ]
+    )
   end
 end
