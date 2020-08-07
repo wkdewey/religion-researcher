@@ -70,7 +70,6 @@ class TextsController < ApplicationController
   def update
     @text = Text.find_by(id: params[:id])
     @text.update(text_params)
-    byebug
     if @text.save
       redirect_to text_path(@text)
     else
@@ -101,7 +100,7 @@ class TextsController < ApplicationController
           :id
         ]
       ],
-      notes_attributes: [ :name, :id ]
+      notes_attributes: [ :content, :id ]
     )
   end
 end
