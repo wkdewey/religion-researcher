@@ -31,7 +31,12 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find_by(id: params[:id])
     @project.update(project_params)
-    redirect_to project_path(@project)
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      @texts = Text.all
+      render :edit
+    end
   end
 
   def destroy
