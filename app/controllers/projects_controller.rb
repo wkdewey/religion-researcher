@@ -10,8 +10,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_researcher.projects.create(project_params)
-    redirect_to project_path(@project)
+    @project = current_researcher.projects.build(project_params)
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      @texts = Text.all
+      render :new
+    end
   end
 
   def show
