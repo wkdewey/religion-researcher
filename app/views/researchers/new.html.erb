@@ -1,3 +1,17 @@
+<% if @researcher.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@researcher.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+ 
+    <ul>
+    <% @researcher.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for @researcher do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
