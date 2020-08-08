@@ -42,6 +42,8 @@ class TextsController < ApplicationController
     if @text.save
       redirect_to text_path(@text)
     else
+      @authors = Author.all
+      @religious_tradition = ReligiousTradition.all
       render :new
     end
   end
@@ -73,6 +75,8 @@ class TextsController < ApplicationController
     if @text.save
       redirect_to text_path(@text)
     else
+      @authors = Author.all
+      @religious_tradition = ReligiousTradition.all
       render :edit
     end
   end
