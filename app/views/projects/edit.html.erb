@@ -1,13 +1,5 @@
 <h1>Edit <%= @project.title %></h1>
-<%= form_for @project do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :texts %>
-  <%= f.collection_check_boxes :text_ids, @texts, :id, :title %>
-  <%= f.submit %>
-<% end %>
+<%= render partial: "form"  %>
 <%= form_tag project_path(@project.id), method: "delete" do %>
   <%= submit_tag "Delete #{@project.title}" %>
 <% end %>
