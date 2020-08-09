@@ -4,9 +4,11 @@
 <%= link_to "New Text", new_project_text_path(@project) %>
 <h2>Texts</h2>
 <% @project.texts.each do |text| %>
-  <p>Title: <%= text.title %></p>
+  <p>Title: <%= link_to text.title, project_text_path(text) %></p>
   <p>Author: <%= text.author.name %></p>
   <p>Religious tradition: <%= text.author.religious_tradition.name %></p>
   <p>Notes: <%= text.notes.where(project_id: @project.id).first.content %></p>
+  <%= link_to "edit", edit_project_text_path(text) %>
+  <hr>
 <% end %>
 <%= link_to "Edit project", edit_project_path %>
