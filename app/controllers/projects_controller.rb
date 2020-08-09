@@ -1,20 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :require_login
   def index
-    if logged_in?
-      @projects = Project.all
-    else
-      login_error
-    end
+    @projects = Project.all
   end
 
   def new
-    if logged_in?
-      @project = Project.new
-      @texts = Text.all
-    else
-      login_error
-    end
+    @project = Project.new
+    @texts = Text.all
   end
 
   def create
@@ -29,20 +21,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @project = Project.find_by(id: params[:id])
-    else
-      login_error
-    end
+    @project = Project.find_by(id: params[:id])
+    
   end
 
   def edit
     
     @project = Project.find_by(id: params[:id])
     @texts = Text.all
-    if !logged_in?
-      login_error
-    end
   end
 
   def update
