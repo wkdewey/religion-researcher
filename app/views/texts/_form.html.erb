@@ -20,16 +20,19 @@
   <%= f.text_field :title %>
   <%= f.label :subject %>
   <%= f.text_field :subject %>
-  <%= f.label :author_id, "Author" %>
-  <%= author_id_field(@text) %>
   <br>
+  
   <%= f.fields_for :author do |author| %>
+    <%= author.label :id, "Existing author" %>
+    <%= author.collection_select :id, @authors, :id, :name %>
     <%= author.label :name, "New author" %>
     <%= author.text_field :name %>
-    <%= author.collection_select :religious_tradition_id, @religious_tradition, :id, :name %>
+    
     <%= author.fields_for :religious_tradition do |r| %>
-      <%= r.label :name, "religious tradition of author" %>
-      <%= r.text_field :name %>
+      <%= r.label :id, "Religious tradition" %>
+      <%= r.collection_select :id, @religious_tradition, :id, :name %>
+      <%= label_tag :new_name, "input new religious tradition" %>
+      <%= text_field_tag  :new_name %>
     <% end %>
   <% end %>
 

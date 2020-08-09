@@ -31,6 +31,8 @@ class TextsController < ApplicationController
       redirect_to projects_path
     else
       @text = Text.new(project_ids: [params[:project_id]])
+      @text.build_author
+      @text.author.build_religious_tradition
       @authors = Author.all
       @religious_tradition = ReligiousTradition.all
     end
@@ -38,7 +40,7 @@ class TextsController < ApplicationController
 
   def create
     @text = Text.new(text_params)
-    
+    byebug
     if @text.save
       redirect_to text_path(@text)
     else
@@ -47,8 +49,6 @@ class TextsController < ApplicationController
       render :new
     end
   end
-
-  
   
   def edit
     if params[:project_id]
@@ -93,18 +93,17 @@ class TextsController < ApplicationController
 
   def text_params
     params.require(:text).permit(:title,
-      :subject, 
-      :author_id, 
+      :subject,
       project_ids: [],
       author_attributes: [
+        :id,
         :name,
-        :religious_tradition_id,
         religious_tradition_attributes: [
-          :name,
-          :id
+          :id,
+          :name
         ]
       ],
-      notes_attributes: [ :content, :id ]
+      notes_attributes: [:id, :content]
     )
   end
 end
