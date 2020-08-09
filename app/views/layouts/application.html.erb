@@ -15,6 +15,17 @@
         <%= msg %>
       </div>
     <% end %>
+    
+
     <%= yield %>
+    <% if logged_in? %>
+      <%= link_to "Create a new project", new_project_path %>
+      <%= link_to "Enter a new text", new_text_path %>
+      <%= link_to "View all projects", projects_path %>
+      <%= link_to "View all texts", texts_path %>
+      <%= link_to "View all notes", written_notes_path %>
+      <%= link_to "View all researchers", researchers_path %>
+      <%= link_to "View your profile", researcher_path %>
+    <% end %>
   </body>
 </html>
