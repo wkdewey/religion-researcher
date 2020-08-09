@@ -20,6 +20,8 @@
   <%= f.text_field :title %>
   <%= f.label :subject %>
   <%= f.text_field :subject %>
+  <%= f.label :author_id, "Author" %>
+  <%= author_id_field(@text) %>
   <br>
   <%= f.fields_for :author do |author| %>
     <%= author.label :name, "New author" %>
