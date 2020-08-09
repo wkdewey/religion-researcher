@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
 
   def login_error
     flash[:error] = "You must log in to see that page"
-    redirect "/login"
+    redirect_to "/login"
   end
 end

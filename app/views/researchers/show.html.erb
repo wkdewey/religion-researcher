@@ -2,6 +2,5 @@
 
 <h2>Your projects</h2>
 <% @researcher.projects.each do |project| %>
-  <% byebug %>
   <%= link_to project.title, project_path(project.id) %>
 <% end %>
