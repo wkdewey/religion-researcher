@@ -1,12 +1,20 @@
 class NotesController < ApplicationController
 
   def index
-    @notes = Note.all
+    if logged_in?
+      @notes = Note.all
+    else
+      login_error
+    end
   end
 
   def written
-    @notes = Note.written
-    render :index
+    if logged_in?
+      @notes = Note.written
+      render :index
+    else
+      login_error
+    end
   end
 
 
