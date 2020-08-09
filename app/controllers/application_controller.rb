@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!session[:researcher_id]
   end
+
+  def login_error
+    flash[:error] = "You must log in to see that page"
+    redirect "/login"
+  end
 end

@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    if logged_in?
+      @projects = Project.all
+    else
+      login_error
+    end
   end
 
   def new
