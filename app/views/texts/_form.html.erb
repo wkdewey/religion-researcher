@@ -35,11 +35,12 @@
       <%= r.text_field :name %>
     <% end %>
   <% end %>
+  <br>
 
   <%= f.fields_for :notes do |note| %>
     <% if note.object.project_id == @project %>
-      <%= note.label :content %>
-      <%= note.text_field :content %>
+      <%= note.label :content, "Enter note" %>
+      <%= note.text_area :content %>
     <% end %>
 
   <% end %>
