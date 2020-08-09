@@ -31,8 +31,8 @@
     <%= author.fields_for :religious_tradition do |r| %>
       <%= r.label :id, "Religious tradition" %>
       <%= r.collection_select :id, @religious_tradition, :id, :name %>
-      <%= label_tag :new_name, "input new religious tradition" %>
-      <%= text_field_tag  :new_name %>
+      <%= r.label :name, "input new religious tradition" %>
+      <%= r.text_field :name %>
     <% end %>
   <% end %>
 

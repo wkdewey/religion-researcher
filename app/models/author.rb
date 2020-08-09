@@ -6,8 +6,12 @@ class Author < ApplicationRecord
 
 
   def religious_tradition_attributes=(religious_tradition)
-    self.religious_tradition = ReligiousTradition.find_or_create_by(id: religious_tradition[:id])
-    self.religious_tradition.update(religious_tradition)
+    if religious_tradition[:name].empty?
+      self.religious_tradition = ReligiousTradition.find_by(id: religious_tradition[:id])
+    else
+      self.create_religious_tradition(name: religious_tradition[:name])
+      
+    end
     byebug
-   end
+  end
 end

@@ -15,8 +15,14 @@ class Text < ApplicationRecord
   #   self.author = author
   # end
  def author_attributes=(author)
-  self.author = Author.find_or_create_by(id: author[:id])
-  self.author.update(author)
+  
+  if author[:name].empty?
+    self.author = Author.find_by(id: author[:id])
+  else
+    author.delete("id")
+    self.create_author(author)
+  
+  end
   byebug
  end
   
