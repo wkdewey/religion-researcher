@@ -18,6 +18,7 @@
     
 
     <%= yield %>
+    <hr>
     <% if logged_in? %>
       <%= link_to "Create a new project", new_project_path %>
       <%= link_to "Enter a new text", new_text_path %>
