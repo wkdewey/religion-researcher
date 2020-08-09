@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  before_action :require_login
   def index
     if logged_in?
       @projects = Project.all

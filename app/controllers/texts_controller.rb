@@ -1,5 +1,5 @@
 class TextsController < ApplicationController
-
+  before_action :require_login
   def index
     if params[:project_id]
       @project = Project.find_by(id: params[:project_id])

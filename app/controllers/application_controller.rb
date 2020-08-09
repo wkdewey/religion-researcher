@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     flash[:error] = "You must log in to see that page"
     redirect_to "/login"
   end
+
+  def require_login
+    return head(:forbidden) unless logged_in?
+  end
 end

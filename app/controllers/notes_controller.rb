@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
 
+  before_action :require_login
   def index
     if logged_in?
       @notes = Note.all

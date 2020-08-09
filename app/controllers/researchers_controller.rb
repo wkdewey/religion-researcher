@@ -1,4 +1,5 @@
 class ResearchersController < ApplicationController
+  before_action :require_login, only: [:show]
   def new
     @researcher = Researcher.new
   end
