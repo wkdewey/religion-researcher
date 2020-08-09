@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_researcher
-    Researcher.find_by(id: session[:researcher_id])
+    @current_researcher ||= Researcher.find_by(id: session[:researcher_id])
+  end
+
+  def logged_in?
+    !!session[:user_id]
   end
 end
