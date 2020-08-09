@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !!session[:user_id]
+    !!session[:researcher_id]
   end
 end
