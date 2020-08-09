@@ -21,11 +21,11 @@
     <hr>
     <% if logged_in? %>
       <%= link_to "Create a new project", new_project_path %>
-      <%= link_to "Enter a new text", new_text_path %>
+      <%= link_to "Enter a new text", new_text_path %><br>
       <%= link_to "View all projects", projects_path %>
-      <%= link_to "View all texts", texts_path %>
+      <%= link_to "View all texts", texts_path %><br>
       <%= link_to "View all notes", written_notes_path %>
-      <%= link_to "View your profile", researcher_path(current_researcher) %>
+      <%= link_to "View your profile", researcher_path(current_researcher) %><br>
       <%= link_to "Log out", logout_path %>
     <% else %>
       <%= link_to 'Sign up', new_researcher_path %>
