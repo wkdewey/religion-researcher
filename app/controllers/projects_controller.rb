@@ -9,12 +9,17 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
-    @texts = Text.all
+    if logged_in?
+      @project = Project.new
+      @texts = Text.all
+    else
+      login_error
+    end
   end
 
   def create
     @project = current_researcher.projects.build(project_params)
+    
     if @project.save
       redirect_to project_path(@project)
     else
@@ -24,12 +29,20 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
+    if logged_in?
+      @project = Project.find_by(id: params[:id])
+    else
+      login_error
+    end
   end
 
   def edit
+    
     @project = Project.find_by(id: params[:id])
     @texts = Text.all
+    if !logged_in?
+      login_error
+    end
   end
 
   def update
