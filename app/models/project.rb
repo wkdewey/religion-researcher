@@ -7,7 +7,6 @@ class Project < ApplicationRecord
 
   before_destroy :destroy_notes
   
-
   def destroy_notes
     self.notes.destroy_all
   end
