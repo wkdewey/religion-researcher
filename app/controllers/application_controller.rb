@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   def login_researcher(researcher)
     session[:researcher_id] = researcher.id
+    redirect_to researcher_path(researcher)
   end
 
   def current_researcher
