@@ -42,9 +42,7 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:title, :description, :text_ids =>[])
   end
 
-  def initialize_project
-    @project = Project.find_by(id: params[:id]) || Project.new
-  end
+  
 
   def initialize_texts
     @texts = Text.all

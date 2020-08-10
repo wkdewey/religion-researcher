@@ -2,7 +2,7 @@ class TextsController < ApplicationController
   before_action :require_login
   def index
     if params[:project_id]
-      @project = Project.find_by(id: params[:project_id])
+      initialize_project
       if @project.nil?
         redirect_to projects_path
       else
@@ -15,13 +15,13 @@ class TextsController < ApplicationController
 
   def show
     if params[:project_id]
-      @project = Project.find_by(id: params[:project_id])
+      initialize_project
       @text = @project.texts.find_by(id: params[:id])
       if @text.nil?
         redirect_to project_texts_path(@project)
       end
     else
-      @text = Text.find(params[:id])
+      initialize_text
     end
     
   end
@@ -33,8 +33,7 @@ class TextsController < ApplicationController
       @text = Text.new(project_ids: [params[:project_id]])
       @text.build_author
       @text.author.build_religious_tradition
-      @authors = Author.all
-      @religious_tradition = ReligiousTradition.all
+      initialize_authors
     end
   end
 
@@ -44,8 +43,7 @@ class TextsController < ApplicationController
     if @text.save
       redirect_to text_path(@text)
     else
-      @authors = Author.all
-      @religious_tradition = ReligiousTradition.all
+      initialize_authors
       render :new
     end
   end
@@ -58,25 +56,22 @@ class TextsController < ApplicationController
       else
         @project = params[:project_id].to_i
         @text = project.texts.find_by(id: params[:id])
-        @authors = Author.all
-        @religious_tradition = ReligiousTradition.all
+        initialize_authors
         redirect_to project_texts_path(project) if @text.nil?
       end
     else
-      @text = Text.find_by(id: params[:id])
-      @authors = Author.all
-      @religious_tradition = ReligiousTradition.all
+      initialize_text
+      initialize_authors
     end
   end
 
   def update
-    @text = Text.find_by(id: params[:id])
+    initialize_text
     @text.update(text_params)
     if @text.save
       redirect_to text_path(@text)
     else
-      @authors = Author.all
-      @religious_tradition = ReligiousTradition.all
+      initialize_authors
       render :edit
     end
   end
@@ -105,5 +100,13 @@ class TextsController < ApplicationController
       ],
       notes_attributes: [:id, :content]
     )
+  end
+
+  def initialize_text
+  end
+
+  def initialize_authors
+    @authors = Author.all
+    @religious_tradition = ReligiousTradition.all
   end
 end
