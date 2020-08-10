@@ -1,2 +1,3 @@
 <h1>Create a new project</h1>
+<%= render partial: "application/errors", locals: { model: @project } %>
 <%= render partial: "form", locals: { project: @project, texts: @texts } %>
