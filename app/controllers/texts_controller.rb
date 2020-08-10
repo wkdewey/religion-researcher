@@ -50,11 +50,10 @@ class TextsController < ApplicationController
   
   def edit
     if params[:project_id]
-      project = Project.find_by(id: params[:project_id])
-      if project.nil?
+      @project = Project.find_by(id: params[:project_id])
+      if @project.nil?
         redirect_to projects_path, alert: "Project not found."
       else
-        @project = params[:project_id].to_i
         @text = project.texts.find_by(id: params[:id])
         initialize_authors
         redirect_to project_texts_path(project) if @text.nil?
