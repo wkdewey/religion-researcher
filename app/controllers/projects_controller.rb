@@ -5,35 +5,53 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
-    @texts = Text.all
+    initialize_project
+    initialize_texts
   end
 
   def create
     @project = current_researcher.projects.build(project_params)
-    
-    if @project.save
-      redirect_to project_path(@project)
-    else
-      @texts = Text.all
-      render :new
-    end
+    attempt_save_project
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
-    
+    initialize_project
   end
 
   def edit
     
-    @project = Project.find_by(id: params[:id])
-    @texts = Text.all
+    initialize_project
+    initialize_texts
   end
 
   def update
-    @project = Project.find_by(id: params[:id])
+    initialize_project
     @project.update(project_params)
+    attempt_save_project
+  end
+
+  def destroy
+    initialize_project
+    @project.destroy
+    redirect_to projects_path
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:title, :description, :text_ids =>[])
+  end
+
+  def initialize_project
+    @project = Project.find_by(id: params[:id]) || Project.new
+  end
+
+  def initialize_texts
+    @texts = Text.all
+  end
+
+
+  def attempt_save_project
     if @project.save
       redirect_to project_path(@project)
     else
@@ -41,18 +59,4 @@ class ProjectsController < ApplicationController
       render :edit
     end
   end
-
-  def destroy
-    @project = Project.find_by(id: params[:id])
-    @project.notes.each do |note|
-      note.destroy
-    end
-    @project.destroy
-    redirect_to projects_path
-  end
-
-  def project_params
-    params.require(:project).permit(:title, :description, :text_ids =>[])
-  end
-
 end
