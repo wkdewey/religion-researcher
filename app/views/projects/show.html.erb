@@ -5,7 +5,8 @@
 <%= link_to "New Text", new_project_text_path(@project) %>
 <h2>Texts</h2>
 <% @project.texts.each do |text| %>
-  <%= render partial: "texts/details", locals: {text: text} %>
+  <h1><%= link_to text.title, project_text_path(text) %></h1>
+  <h2>by <%= text.author.name %></h2>
   <p>Notes: <%= text.get_note(@project) %></p>
   <%= link_to "edit", edit_project_text_path(@project, text) %>
   <hr>
