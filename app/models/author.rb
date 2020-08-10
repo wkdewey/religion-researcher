@@ -12,6 +12,5 @@ class Author < ApplicationRecord
       self.create_religious_tradition(name: religious_tradition[:name])
       
     end
-    byebug
   end
 end
