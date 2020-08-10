@@ -14,8 +14,8 @@
 <% end %>
 
 
-<%= form_for @text do |f| %>
-  <%= hidden_field_tag "text[project_ids][]", @text.project_ids%>
+<%= form_for text do |f| %>
+  <%= hidden_field_tag "text[project_ids][]", text.project_ids%>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :subject %>
@@ -24,13 +24,13 @@
   
   <%= f.fields_for :author do |author| %>
     <%= author.label :id, "Existing author" %>
-    <%= author.collection_select :id, @authors, :id, :name %>
+    <%= author.collection_select :id, authors, :id, :name %>
     <%= author.label :name, "New author" %>
     <%= author.text_field :name %>
     
     <%= author.fields_for :religious_tradition do |r| %>
       <%= r.label :id, "Religious tradition" %>
-      <%= r.collection_select :id, @religious_tradition, :id, :name %>
+      <%= r.collection_select :id, religious_tradition, :id, :name %>
       <%= r.label :name, "input new religious tradition" %>
       <%= r.text_field :name %>
     <% end %>
@@ -38,7 +38,7 @@
   <br>
 
   <%= f.fields_for :notes do |note| %>
-    <% if note.object.belongs_to?(@project) %>
+    <% if note.object.belongs_to?(project) %>
       <%= note.label :content, "Enter note" %>
       <%= note.text_area :content %>
     <% end %>

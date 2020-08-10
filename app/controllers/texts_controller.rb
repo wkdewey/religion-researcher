@@ -54,7 +54,7 @@ class TextsController < ApplicationController
       if @project.nil?
         redirect_to projects_path, alert: "Project not found."
       else
-        @text = project.texts.find_by(id: params[:id])
+        @text = @project.texts.find_by(id: params[:id])
         initialize_authors
         redirect_to project_texts_path(project) if @text.nil?
       end
