@@ -1,6 +1,4 @@
-<h1><%= @text.title %></h1>
-<h2>by <%= @text.author.name %></h2>
-<p>Religious tradition: <%= @text.author.religious_tradition.name %></p>
+<%= render partial: "details", locals: { text: @text } %>
 <p>Description: <%= @text.subject %></p>
 <h2>notes</h2>
 <% @text.notes.each do |note| %>
