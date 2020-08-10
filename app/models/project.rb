@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   validates :title, presence: true
 
   before_destroy :destroy_notes
-
+  
 
   def destroy_notes
     self.notes.destroy_all

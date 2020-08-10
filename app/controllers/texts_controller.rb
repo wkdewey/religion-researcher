@@ -77,7 +77,7 @@ class TextsController < ApplicationController
   end
 
   def destroy
-    @text = Text.find(params[:id])
+    initialize_text
     @text.destroy
     flash[:notice] = "Text deleted."
     redirect_to texts_path
@@ -103,6 +103,7 @@ class TextsController < ApplicationController
   end
 
   def initialize_text
+    @text = Text.find(params[:id])
   end
 
   def initialize_authors
