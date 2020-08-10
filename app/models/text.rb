@@ -21,9 +21,11 @@ class Text < ApplicationRecord
   else
     author.delete("id")
     self.create_author(author)
-  
   end
-  byebug
+ end
+
+ def get_note(project)
+  notes.where(project_id: project.id).first.content
  end
   
 end
