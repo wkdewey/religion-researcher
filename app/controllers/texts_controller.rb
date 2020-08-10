@@ -109,4 +109,8 @@ class TextsController < ApplicationController
     @authors = Author.all
     @religious_tradition = ReligiousTradition.all
   end
+
+  def initialize_project
+    @project = Project.find_by(id: params[:project_id])
+  end
 end

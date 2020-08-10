@@ -21,7 +21,5 @@ class ApplicationController < ActionController::Base
     return head(:forbidden) unless logged_in?
   end
 
-  def initialize_project
-    @project = Project.find_by(id: params[:id]) || Project.new
-  end
+  
 end
