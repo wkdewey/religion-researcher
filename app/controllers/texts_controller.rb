@@ -34,7 +34,6 @@ class TextsController < ApplicationController
       @text.build_author
       @text.author.build_religious_tradition
       initialize_authors
-      initialize_project if params[:project_id]
     end
   end
 
@@ -96,8 +95,7 @@ class TextsController < ApplicationController
           :id,
           :name
         ]
-      ],
-      notes_attributes: [:id, :content]
+      ]
     )
   end
 
@@ -108,6 +106,8 @@ class TextsController < ApplicationController
   def initialize_authors
     @authors = Author.all
     @religious_tradition = ReligiousTradition.all
+    initialize_project if params[:project_id]
+
   end
 
   def initialize_project

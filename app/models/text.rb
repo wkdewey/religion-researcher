@@ -24,6 +24,7 @@ class Text < ApplicationRecord
   end
  end
 
+
  def get_note(project)
   notes.where(project_id: project.id).first.content
  end

@@ -23,12 +23,5 @@
   <% end %>
   <br>
 
-  <%= f.fields_for :notes do |note| %>
-    <% if note.object.belongs_to?(project) %>
-      <%= note.label :content, "Enter note" %>
-      <%= note.text_area :content %>
-    <% end %>
-
-  <% end %>
   <%= f.submit %>
 <% end %>
