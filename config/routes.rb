@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :researchers, only: [:new, :create, :show]
   resources :projects do
     resources :texts
-    resources :notes, only: [:index, :new, :create]
+    resources :notes, only: [:index, :new, :create, :edit, :update]
   end
   resources :texts
   resources :notes, only: [:index, :new, :create, :edit, :update] do

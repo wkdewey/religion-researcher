@@ -9,8 +9,7 @@
 <% @project.texts.uniq.each do |text| %>
   <h3><%= link_to text.title, project_text_path(@project, text) %></h3>
   <p>by <%= text.author.name %></p>
-  <p>Note: <%= text.get_note(@project) %></p>
-  <%= link_to "edit note"
-  <%= link_to "edit text", edit_project_text_path(@project, text) %>
+  <p>Note: <%= text.note(@project).content %></p>
+  <%= link_to "edit note", edit_project_note_path(@project, text.note(@project)) %>
   <hr>
 <% end %>

@@ -24,8 +24,8 @@ class Text < ApplicationRecord
  end
 
 
- def get_note(project)
-  notes.where(project_id: project.id).first.content
+ def note(project)
+  notes.where(project_id: project.id).first
  end
   
 end

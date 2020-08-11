@@ -29,6 +29,12 @@ class NotesController < ApplicationController
     initialize_projects_and_texts
   end
 
+  def update
+    @note = Note.find_by(id: params[:id])
+    @note.update(note_params)
+    redirect_to project_path(@note.project_id)
+  end
+
   private
 
   def note_params
