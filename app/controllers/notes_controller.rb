@@ -11,5 +11,11 @@ class NotesController < ApplicationController
     render :index
   end
 
+  def new
+    @note = Note.new
+    @projects = current_researcher.projects
+    @texts = Text.all
+  end
+
 
 end

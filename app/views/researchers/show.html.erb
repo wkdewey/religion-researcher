@@ -4,3 +4,5 @@
 <% @researcher.projects.each do |project| %>
   <%= link_to project.title, project_path(project.id) %>
 <% end %>
+<br>
+<%= button_to "New Note", new_note_path, method: :get %>
