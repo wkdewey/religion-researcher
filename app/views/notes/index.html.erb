@@ -1,5 +1,6 @@
+<h1>Notes</h1>
 <% @notes.each do |note| %>
-  <h1>Project:<%= note.project.title %></h1>
   <h2><%= note.text.title %></h2>
+  <h3>(from the project <%= note.project.title %>)</h1>
   <p><%= note.content %></p>
 <% end %>
