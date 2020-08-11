@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'application#welcome'
   resources :researchers, only: [:new, :create, :show]
   resources :projects do
-    resources :texts
+    resources :texts, only: [:index, :new, :create]
     resources :notes, only: [:index, :new, :create, :edit, :update]
   end
   resources :texts
