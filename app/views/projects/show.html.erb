@@ -5,9 +5,10 @@
 <p> <%= @project.description %> </p>
 <%= link_to "New Text", new_project_text_path(@project) %><br>
 <%= link_to "Annotate a text", new_project_note_path(@project) %>
+<%= link_to "Display notes only", project_notes_path(@project) %>
 <h3>Texts</h3>
 <% @project.texts.uniq.each do |text| %>
-  <h3><%= link_to text.title, project_text_path(@project, text) %></h3>
+  <h3><%= link_to text.title, text_path(text) %></h3>
   <p>by <%= text.author.name %></p>
   <p>Note: <%= text.note(@project).content %></p>
   <%= link_to "edit note", edit_project_note_path(@project, text.note(@project)) %>
