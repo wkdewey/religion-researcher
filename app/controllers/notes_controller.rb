@@ -15,14 +15,13 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new
+    @note = Note.new(project_id: params[:project_id])
     @projects = current_researcher.projects
     @texts = Text.all
   end
 
   def create
     @note = Note.create(note_params)
-    byebug
     redirect_to project_path(@note.project_id)
   end
 
