@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :researchers, only: [:new, :create, :show]
   resources :projects do
     resources :texts
+    resources :notes, only: [:index, :new, :create]
   end
   resources :texts
   resources :notes, only: [:index, :new, :create] do

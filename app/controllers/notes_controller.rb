@@ -2,8 +2,11 @@ class NotesController < ApplicationController
 
   before_action :require_login
   def index
-    @notes = Note.all
-      
+    if params[:project_id]
+      @notes = Project.find_by(id: params[:project_id]).notes
+    else
+      @notes = Note.all
+    end
   end
 
   def written
