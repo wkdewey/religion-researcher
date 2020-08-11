@@ -53,11 +53,11 @@ see sessions#create_omniauth (linked from welcome page). Logs in via Github
 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 
-Texts nested within projects
+Texts and notes nested within projects
 
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 
-I included this, it will create a new text associated with a project
+I included this, it will create a new text associated with a project; also can create and edit a note associated with a project
 
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
 
@@ -74,7 +74,7 @@ I tried my best here, including the use of model class methods, but I'm open to 
 
 - [x] Views use helper methods if appropriate
 
-author_id_field so that users can select an author for a text
+project_id_field so that users can select a project for a note, or else it will associate the note with an existing project
 also current_researcher for the current user
 
 - [x] Views use partials if appropriate
