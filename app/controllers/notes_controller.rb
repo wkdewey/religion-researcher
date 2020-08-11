@@ -17,5 +17,15 @@ class NotesController < ApplicationController
     @texts = Text.all
   end
 
+  def create
+    @note = Note.create(note_params)
+    byebug
+    redirect_to project_path(@note.project_id)
+  end
 
+  private
+
+  def note_params
+    params.require(:note).permit(:project_id, :text_id, :content)
+  end
 end
