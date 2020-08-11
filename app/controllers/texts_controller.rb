@@ -34,12 +34,12 @@ class TextsController < ApplicationController
       @text.build_author
       @text.author.build_religious_tradition
       initialize_authors
+      initialize_project if params[:project_id]
     end
   end
 
   def create
     @text = Text.new(text_params)
-    byebug
     if @text.save
       redirect_to text_path(@text)
     else
