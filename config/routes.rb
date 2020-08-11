@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :notes, only: [:index, :new, :create]
   end
   resources :texts
-  resources :notes, only: [:index, :new, :create] do
+  resources :notes, only: [:index, :new, :create, :edit, :update] do
     get 'written', on: :collection
   end
   get '/signup', to: 'researchers#new'
