@@ -1,7 +1,7 @@
 class Author < ApplicationRecord
   has_many :texts
   belongs_to :religious_tradition
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   accepts_nested_attributes_for :religious_tradition
 
 
