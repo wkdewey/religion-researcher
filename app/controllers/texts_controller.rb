@@ -14,16 +14,7 @@ class TextsController < ApplicationController
   end
 
   def show
-    if params[:project_id]
-      initialize_project
-      @text = @project.texts.find_by(id: params[:id])
-      if @text.nil?
-        redirect_to project_texts_path(@project)
-      end
-    else
-      initialize_text
-    end
-    
+    initialize_text
   end
 
   def new

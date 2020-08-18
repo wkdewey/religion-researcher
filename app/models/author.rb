@@ -10,7 +10,6 @@ class Author < ApplicationRecord
       self.religious_tradition = ReligiousTradition.find_by(id: religious_tradition[:id])
     else
       self.create_religious_tradition(name: religious_tradition[:name])
-      
     end
   end
 end
