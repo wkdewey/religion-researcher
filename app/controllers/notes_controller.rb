@@ -52,6 +52,6 @@ class NotesController < ApplicationController
   end
 
   def initialize_note
-    @note = Note.find_by(id: params[:id])
+    @note = Note.find_by(id: params[:id]) || Note.new
   end
 end
