@@ -1,5 +1,5 @@
 <%= form_for @note do |f| %>
-  <%= f.label :text_id, "Please choose a text and a project to associate" %>
+  <%= f.label :text_id, "Please choose a text" %>
   <%= f.collection_select :text_id, @texts, :id, :title %>
   <%= project_id_field(@note) %>
   <%= f.label :content %>
