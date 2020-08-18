@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if @researcher && @researcher.authenticate(researcher_params[:password])
       login_researcher(@researcher)
     else
+      flash[:errors] = "Invalid credentials"
       redirect_to '/login'
     end
   end
@@ -17,6 +18,7 @@ class SessionsController < ApplicationController
     if @researcher
       login_researcher(@researcher)
     else
+      flash[:errors] = "Invalid credentials"
       redirect_to '/login'
     end
   end
