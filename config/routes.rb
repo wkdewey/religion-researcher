@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :texts, only: [:index, :new, :create]
     resources :notes, only: [:index, :new, :create, :edit, :update]
+    get 'search', on: :collection
   end
   resources :texts
   resources :notes, only: [:index, :new, :create, :edit, :update] do

@@ -1,41 +1,43 @@
 class ProjectsController < ApplicationController
   before_action :require_login
   before_action :require_resource_ownership, only: [:edit, :update, :destroy]
-
+  before_action :initialize_project
   def index
     @projects = Project.all
   end
 
   def new
-    initialize_project
     initialize_texts
   end
 
   def create
     @project = current_researcher.projects.build(project_params)
+    #move below method back into the action
     attempt_save_project
   end
 
   def show
-    initialize_project
   end
 
   def edit
     
-    initialize_project
     initialize_texts
   end
 
   def update
-    initialize_project
     @project.update(project_params)
+    #refactor this, if project.update
     attempt_save_project
   end
 
   def destroy
-    initialize_project
     @project.destroy
     redirect_to projects_path
+  end
+
+  def search
+    @projects = Project.search(params[:search])
+    render :index
   end
 
   private

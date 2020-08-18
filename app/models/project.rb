@@ -6,7 +6,7 @@ class Project < ApplicationRecord
   validates :title, presence: true
 
   before_destroy :destroy_notes
-  
+  scope :search, ->(query) { where("title LIKE ?" , "%#{query}%") }
   def destroy_notes
     self.notes.destroy_all
   end
