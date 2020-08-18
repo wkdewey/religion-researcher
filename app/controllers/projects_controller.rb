@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :require_login
-  before_action :require_resource_ownership, only: [:edit, :update, :destory]
+  before_action :require_resource_ownership, only: [:edit, :update, :destroy]
 
   def index
     @projects = Project.all

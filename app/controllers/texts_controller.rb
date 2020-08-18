@@ -98,7 +98,6 @@ class TextsController < ApplicationController
     @authors = Author.all
     @religious_tradition = ReligiousTradition.all
     initialize_project if params[:project_id]
-
   end
 
   def initialize_project
