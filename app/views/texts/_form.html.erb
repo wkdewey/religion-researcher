@@ -3,21 +3,21 @@
 <%= form_for text do |f| %>
   <%= hidden_field_tag "text[project_ids][]", text.project_ids%>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
   <%= f.label :subject %>
   <%= f.text_field :subject %>
   <br>
   
   <%= f.fields_for :author do |author| %>
-    <%= author.label :id, "Existing author" %>
-    <%= author.collection_select :id, authors, :id, :name %>
-    <%= author.label :name, "New author" %>
-    <%= author.text_field :name %>
+    <%= author.label :id, "Choose an existing author" %>
+    <%= author.collection_select :id, authors, :id, :name %><br>
+    <%= author.label :name, "Input a new author (will override above)" %>
+    <%= author.text_field :name %><br>
     
     <%= author.fields_for :religious_tradition do |r| %>
-      <%= r.label :id, "Religious tradition" %>
-      <%= r.collection_select :id, religious_tradition, :id, :name %>
-      <%= r.label :name, "input new religious tradition" %>
+      <%= r.label :id, "Choose a religious tradition" %>
+      <%= r.collection_select :id, religious_tradition, :id, :name %><br>
+      <%= r.label :name, "Input new religious tradition (will override above)" %>
       <%= r.text_field :name %>
     <% end %>
   <% end %>
