@@ -15,7 +15,7 @@ class NotesController < ApplicationController
   end
 
   def new
-    @note = Note.new(project_id: params[:project_id])
+    initialize_note
     initialize_projects_and_texts
   end
 
@@ -30,12 +30,12 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find_by(id: params[:id])
+    initialize_note
     initialize_projects_and_texts
   end
 
   def update
-    @note = Note.find_by(id: params[:id])
+    initialize_note
     @note.update(note_params)
     redirect_to project_path(@note.project_id)
   end
@@ -49,5 +49,9 @@ class NotesController < ApplicationController
   def initialize_projects_and_texts
     @projects = current_researcher.projects
     @texts = Text.all
+  end
+
+  def initialize_note
+    @note = Note.find_by(id: params[:id])
   end
 end
