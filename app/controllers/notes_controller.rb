@@ -16,6 +16,7 @@ class NotesController < ApplicationController
 
   def new
     initialize_note
+    @note.project_id = params[:project_id]
     initialize_projects_and_texts
   end
 
