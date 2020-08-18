@@ -21,7 +21,12 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.create(note_params)
-    redirect_to project_path(@note.project_id)
+    if @note.save
+      redirect_to project_path(@note.project_id)
+    else
+      initialize_projects_and_texts
+      render :new
+    end
   end
 
   def edit
