@@ -1,2 +1,2 @@
 <h1>Edit Note</h1>
-<%= render partial: "form" %>
+<%= render partial: "form", locals: { note: @note, projects: @projects, texts: @texts } %>
