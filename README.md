@@ -3,7 +3,7 @@
 
 # Religion Researcher
 
-Welcome to Religion Researcher! This app allows researchers to keep track of their projects and texts that they are studying, recording details including religious tradition and author, and also to annotate the texts by project.
+Welcome to Religion Researcher! This app allows researchers to keep track of their projects and texts that they are studying, record details including religious tradition and author, and make project-specific annotations.
 
 ## Installation
 
