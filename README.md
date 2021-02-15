@@ -3,7 +3,7 @@
 
 # Religion Researcher
 
-Welcome to Religion Researcher! This app allows researchers to keep track of their projects and texts that they are studying, recording details including religious tradition and author, and also to annotate the texts by project.
+Welcome to Religion Researcher! This app allows researchers to keep track of their projects and texts that they are studying, record details including religious tradition and author, and make project-specific annotations.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Welcome to Religion Researcher! This app allows researchers to keep track of the
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/wkdewey/sinatra-portfolio-project-travel-log. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct][https://github.com/rails-portfolio-project-religion-researcher/sinatra-portfolio-project-travel-log/CODE_OF_CONDUCT.md].
+Bug reports and pull requests are welcome on GitHub at https://github.com/wkdewey/religion-researcher. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct][https://github.com/wkdewey/rails-portfolio-project-religion-researcher/CODE_OF_CONDUCT.md].
 
 
 ## License
@@ -24,4 +24,4 @@ The gem is available as open source under the terms of the [MIT License][https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Religion Researcher project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct][https://github.com/rails-portfolio-project-religion-researcher/CODE_OF_CONDUCT.md].
+Everyone interacting in the Religion Researcher project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct][https://github.com/wkdewey/rails-portfolio-project-religion-researcher/CODE_OF_CONDUCT.md].
