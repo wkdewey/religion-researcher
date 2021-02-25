@@ -32,7 +32,7 @@
     <% else %>
       <%= link_to 'Sign up', new_researcher_path %>
       <%= link_to 'Log in', login_path %>
-      <%= link_to 'Sign in with Github', '/auth/github'%>
+      <%= link_to 'Sign in with Github', '/auth/github', method: :post %>
     <% end %>
   </body>
 </html>
