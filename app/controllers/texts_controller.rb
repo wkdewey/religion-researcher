@@ -72,12 +72,12 @@ class TextsController < ApplicationController
       project_ids: [],
       author_attributes: [
         :id,
-        :name,
-        religious_tradition_attributes: [
-          :id,
-          :name
-        ]
+        :name],
+      religious_tradition_attributes: [
+        :id,
+        :name
       ]
+      
     )
   end
 
