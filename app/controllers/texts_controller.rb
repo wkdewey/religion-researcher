@@ -23,7 +23,7 @@ class TextsController < ApplicationController
     else
       @text = Text.new(project_ids: [params[:project_id]])
       @text.build_author
-      @text.author.build_religious_tradition
+      @text.build_religious_tradition
       initialize_authors
     end
   end
