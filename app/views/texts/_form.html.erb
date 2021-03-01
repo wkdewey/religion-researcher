@@ -14,12 +14,13 @@
     <%= author.label :name, "Input a new author (will override above)" %>
     <%= author.text_field :name %><br>
     
-    <%= author.fields_for :religious_tradition do |r| %>
-      <%= r.label :id, "Choose a religious tradition" %>
-      <%= r.collection_select :id, religious_tradition, :id, :name %><br>
-      <%= r.label :name, "Input new religious tradition (will override above)" %>
-      <%= r.text_field :name %>
-    <% end %>
+    
+  <% end %>
+  <%= f.fields_for :religious_tradition do |r| %>
+    <%= r.label :id, "Choose a religious tradition" %>
+    <%= r.collection_select :id, religious_tradition, :id, :name %><br>
+    <%= r.label :name, "Input new religious tradition (will override above)" %>
+    <%= r.text_field :name %>
   <% end %>
   <br>
 
