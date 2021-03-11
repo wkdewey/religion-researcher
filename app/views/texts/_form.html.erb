@@ -12,7 +12,7 @@
     <%= author.label :id, "Choose an existing author" %>
     <%= author.collection_select :id, authors, :id, :name %><br>
     <%= author.label :name, "Input a new author (will override above)" %>
-    <%= author.text_field :name %><br>
+    <%= author.text_field :name, value: "" %><br>
     
     
   <% end %>
@@ -20,7 +20,7 @@
     <%= r.label :id, "Choose a religious tradition" %>
     <%= r.collection_select :id, religious_tradition, :id, :name %><br>
     <%= r.label :name, "Input new religious tradition (will override above)" %>
-    <%= r.text_field :name %>
+    <%= r.text_field :name, value: "" %>
   <% end %>
   <br>
 
