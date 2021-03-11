@@ -1,5 +1,5 @@
 <%= render partial: "details", locals: { text: @text } %>
-<p>Description: <%= @text.subject %></p>
+<p>Description of text: <%= @text.subject %></p>
 <h2>notes</h2>
 <% @text.notes.each do |note| %>
   <% if note.content %>
