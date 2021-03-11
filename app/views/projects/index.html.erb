@@ -3,8 +3,11 @@
   <h3>Name:<%= link_to project.title, project_path(project) %></h3>
   <p>Researcher: <%= link_to project.researcher.name, researcher_path(project.researcher) %></p>
 <% end %>
-<%= form_tag("/projects/search", :method => :get) do %>
-  <%= label_tag(:search, "Search projects:") %>
-  <%= text_field_tag(:search) %>
-  <%= submit_tag("Search") %>
+# Below code is commented out
+<% if false %>
+  <%= form_tag("/projects/search", :method => :get) do %>
+    <%= label_tag(:search, "Search projects:") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("Search") %>
+  <% end %>
 <% end %>
