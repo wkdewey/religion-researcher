@@ -1,6 +1,6 @@
-<h1>Projects</h1>
+<h1>List of Projects</h1>
 <% @projects.each do |project| %>
-  <h2><%= link_to project.title, project_path(project) %></h1>
+  <h3>Name:<%= link_to project.title, project_path(project) %></h3>
   <p>Researcher: <%= link_to project.researcher.name, researcher_path(project.researcher) %></p>
 <% end %>
 <%= form_tag("/projects/search", :method => :get) do %>
